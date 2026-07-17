@@ -16,8 +16,8 @@ export default function LabHome({ onOpen }: Props) {
       <DotGrid />
       <ScrollView
         className="flex-1"
-        contentContainerClassName="px-6"
         contentContainerStyle={{
+          paddingHorizontal: 24,
           paddingTop: insets.top + 48,
           paddingBottom: insets.bottom + 48,
         }}
@@ -26,48 +26,47 @@ export default function LabHome({ onOpen }: Props) {
         <Text className="font-mono text-[11px] uppercase tracking-[0.22em] text-neutral-400">
           / Lab
         </Text>
-        <Text className="mt-3 text-3xl font-semibold tracking-tight text-neutral-900">
-          My work, open sourced.
+        <Text className="mt-2 text-4xl font-bold tracking-tight text-neutral-900">
+          My work
         </Text>
-        <Text className="mt-2 max-w-[32ch] text-sm leading-relaxed text-neutral-500">
-          React Native experiments. One folder per animation, each with its
-          own README.
+        <Text className="mt-2 max-w-[34ch] text-base leading-relaxed text-neutral-500">
+          React Native experiments, open sourced.
         </Text>
 
-        <View className="mt-10 border-t border-neutral-200">
+        <View className="mt-8 gap-4">
           {LAB_ENTRIES.map((entry, index) => (
             <Pressable
               key={entry.slug}
               onPress={() => onOpen(entry.slug)}
-              className="flex-row items-center gap-4 border-b border-neutral-200 bg-neutral-50/60 py-5 active:bg-neutral-200/60"
+              className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm active:scale-[0.98] active:bg-neutral-100"
             >
-              <Text className="font-mono text-[11px] text-neutral-300 tabular-nums">
-                {String(index + 1).padStart(2, "0")}
-              </Text>
-              <View className="flex-1 gap-1">
-                <Text className="text-base font-semibold text-neutral-900">
-                  {entry.title}
+              <View className="flex-row items-center justify-between">
+                <Text className="font-mono text-[11px] text-neutral-300 tabular-nums">
+                  {String(index + 1).padStart(2, "0")}
                 </Text>
-                <Text className="text-xs leading-relaxed text-neutral-500">
-                  {entry.description}
-                </Text>
-                <View className="mt-1.5 flex-row flex-wrap gap-1.5">
-                  {entry.stack.map((tech) => (
-                    <Text
-                      key={tech}
-                      className="rounded-full border border-neutral-200 px-2 py-0.5 font-mono text-[10px] text-neutral-400"
-                    >
-                      {tech}
-                    </Text>
-                  ))}
-                </View>
+                <Text className="text-xl text-neutral-300">›</Text>
               </View>
-              <Text className="text-lg text-neutral-300">→</Text>
+              <Text className="mt-3 text-xl font-semibold text-neutral-900">
+                {entry.title}
+              </Text>
+              <Text className="mt-1 text-sm leading-relaxed text-neutral-500">
+                {entry.description}
+              </Text>
+              <View className="mt-4 flex-row flex-wrap gap-2">
+                {entry.stack.map((tech) => (
+                  <Text
+                    key={tech}
+                    className="rounded-full bg-neutral-100 px-3 py-1 font-mono text-[10px] text-neutral-500"
+                  >
+                    {tech}
+                  </Text>
+                ))}
+              </View>
             </Pressable>
           ))}
         </View>
 
-        <Text className="mt-8 font-mono text-[10px] uppercase tracking-[0.18em] text-neutral-300">
+        <Text className="mt-10 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-neutral-300">
           github.com/rs-4/lab
         </Text>
       </ScrollView>
