@@ -1,4 +1,5 @@
 import React from "react";
+import { Linking } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { DotGrid } from "@/components/DotGrid";
 import { LAB_ENTRIES } from "@/lab";
@@ -66,9 +67,25 @@ export default function LabHome({ onOpen }: Props) {
           ))}
         </View>
 
-        <Text className="mt-10 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-neutral-300">
-          github.com/rs-4/lab
-        </Text>
+        <View className="mt-10 flex-row items-center justify-center gap-3">
+          <Pressable
+            onPress={() => Linking.openURL("https://github.com/rs-4/lab")}
+            className="px-2 py-2 active:opacity-50"
+          >
+            <Text className="font-mono text-[10px] uppercase tracking-[0.18em] text-neutral-400 underline">
+              github.com/rs-4/lab
+            </Text>
+          </Pressable>
+          <Text className="font-mono text-[10px] text-neutral-300">·</Text>
+          <Pressable
+            onPress={() => Linking.openURL("https://rselmi.com")}
+            className="px-2 py-2 active:opacity-50"
+          >
+            <Text className="font-mono text-[10px] uppercase tracking-[0.18em] text-neutral-400 underline">
+              rselmi.com
+            </Text>
+          </Pressable>
+        </View>
       </ScrollView>
     </View>
   );
